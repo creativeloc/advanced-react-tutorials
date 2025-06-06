@@ -1,4 +1,9 @@
-const UserContainer = ({ user, logout }) => {
+import { useContext } from "react"
+import { NavbarContext } from "./Navbar"
+
+const UserContainer = () => {
+  const { user, logout } = useContext(NavbarContext)
+
   return (
     <div className="user-container">
       {user ? (
@@ -10,7 +15,7 @@ const UserContainer = ({ user, logout }) => {
           </button>
         </>
       ) : (
-        <p>Please login</p>
+        <p>Please Login</p>
       )}
     </div>
   )
