@@ -2,27 +2,31 @@ import { useState, useReducer } from "react"
 import { data } from "../../../data"
 
 const defaultState = {
-  people: data
+  people: data,
+  isLoading: false
 }
 
-const reducer = () => {}
+const reducer = (state, action) => {
+  if (action.type === "CLEAR_LIST") {
+    return { ...state, people: [] }
+  }
+}
 
 const ReducerBasics = () => {
   const [state, dispatch] = useReducer(reducer, defaultState)
-
-  // const [people, setPeople] = useState(data)
 
   const removeItem = (id) => {
     // let newPeople = people.filter((person) => person.id !== id)
     // setPeople(newPeople)
   }
 
-  const resetItems = () => {
-    // setPeople(data)
+  const clearList = () => {
+    dispatch({ type: "CLEAR_LIST" })
+    // setPeople([])
   }
 
-  const clearItems = () => {
-    // setPeople([])
+  const resetItems = () => {
+    // setPeople(data)
   }
 
   console.log(state)
@@ -42,7 +46,7 @@ const ReducerBasics = () => {
         <button
           className="btn"
           style={{ marginTop: "2rem" }}
-          onClick={clearItems}
+          onClick={clearList}
         >
           clear items
         </button>
