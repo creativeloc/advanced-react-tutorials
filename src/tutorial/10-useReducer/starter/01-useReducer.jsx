@@ -6,10 +6,16 @@ const defaultState = {
   isLoading: false
 }
 
+const CLEAR_LIST = "CLEAR_LIST"
+const RESET_LIST = "RESET_LIST"
+const REMOVE_ITEM = "REMOVE_ITEM"
+
 const reducer = (state, action) => {
-  if (action.type === "CLEAR_LIST") {
+  if (action.type === CLEAR_LIST) {
     return { ...state, people: [] }
   }
+  // return state
+  throw new Error(`No Matching "${action.type}" action type`)
 }
 
 const ReducerBasics = () => {
@@ -21,11 +27,11 @@ const ReducerBasics = () => {
   }
 
   const clearList = () => {
-    dispatch({ type: "CLEAR_LIST" })
+    dispatch({ type: CLEAR_LIST })
     // setPeople([])
   }
 
-  const resetItems = () => {
+  const resetList = () => {
     // setPeople(data)
   }
 
@@ -54,7 +60,7 @@ const ReducerBasics = () => {
         <button
           className="btn"
           style={{ marginTop: "2rem" }}
-          onClick={resetItems}
+          onClick={resetList}
         >
           Reset Items
         </button>
